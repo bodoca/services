@@ -43,19 +43,12 @@ module.exports = function(app) {
     });
 
     app.put('/service/update/:serviceId', function(req, res) {
-        Service.find({'serviceId' : req.params.serviceId}, function(error, service) {
-            if(error) {
-                res.json({message: 'Error searching for service', error: error});
-            }
+        Service.updateOne({'serviceId': req.params.serviceId}, req.body, function(err, service) {
+            if (err) {
+                res.json({message: 'Error during update', error: error});
+            } 
             if(service) {
-                _.merge(service, req.body);
-                service.save(function(error) {
-                    if(error) {
-                        res.json({message: 'Error during update', error: error});
-                    } else {
-                        res.json({message: 'Service updated successfully'});
-                    }
-                })
+                res.json({message: 'Service updated successfully'});
             } else {
                 res.json({message: 'Service not found'});
             }
