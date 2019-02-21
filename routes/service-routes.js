@@ -1,4 +1,4 @@
-var ServiceController = require('./service-controller.js');
+var ServiceController = require('../controllers/service-controller.js');
 
 module.exports = function(app) {
 

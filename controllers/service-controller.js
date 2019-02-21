@@ -1,5 +1,5 @@
 var _ = require('lodash');
-var Service = require('./service-model.js');
+var Service = require('../models/service-model.js');
 
 
 
