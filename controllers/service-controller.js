@@ -9,7 +9,7 @@ var Service = require('../models/service-model.js');
             if(error) {
                 res.json({message:'Error while creating service', error: error});
             } else {
-                res.json({message: req.body.name + ' service created successfully'});
+                res.json({message: 'Service created successfully'});
             }
         });    
     };
@@ -35,7 +35,7 @@ var Service = require('../models/service-model.js');
                 res.json({message: 'Error searching for service', error: error});
             }
             if(service) {   
-                res.json({message: 'Service updated successfully', data: service});
+                res.json({message: 'Service found successfully', data: service});
             } else {
                 res.json({message: 'Service not found'});
             }
@@ -43,13 +43,12 @@ var Service = require('../models/service-model.js');
     };
 
     exports.update = function(req, res) {
-        Service.find({'serviceId' : req.params.serviceId}, function(error, service) {
+        Service.updateOne({'serviceId' : req.params.serviceId}, {$set: req.body}, function(error, result) {
             if(error) {
                 res.json({message: 'Error searching for service', error: error});
             }
-            if(service) {
-               // _.merge(service, req.body);
-                console.log(service);
+            if(result) {
+                res.json({message: 'Service updated succefully'});
             } else {
                 res.json({message: 'Service not found'});
             }

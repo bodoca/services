@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded(
 ));
 
 var routes = require('./routes/service-routes.js')(app);
+var routes = require('./routes/customer-routes.js')(app);
 
 var server = app.listen(config.port, function() {
     console.log(config.name + ' API running at http://127.0.0.1:' + config.port);

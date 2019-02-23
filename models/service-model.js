@@ -7,7 +7,7 @@ var serviceSchema = mongoose.Schema({
     serviceType: String,
     price: Number,
     isActive: Boolean,
-    createdDate: Date,
+    createdDate: {type: Date, default: Date.now},
     lastModifiedDate: Date
 });
 
